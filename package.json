@@ -1,0 +1,22 @@
+{
+  "name": "codestore8-cipherschool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaturvedinitin/CodeStore8-CipherSchool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chaturvedinitin/CodeStore8-CipherSchool/issues"
+  },
+  "homepage": "https://github.com/chaturvedinitin/CodeStore8-CipherSchool#readme"
+}
