@@ -24,7 +24,7 @@ const Dashboard = () => {
   }, [filters]);
 
   return (
-    <div className="max-w-[90vw] mx-auto p-6 bg-[#e6f9ff]">
+    <div className="max-w-[90vw] mx-auto p-6 bg-[#f6f8f8]">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
         <h1 className="text-3xl font-bold text-gray-800">Book Management</h1>
