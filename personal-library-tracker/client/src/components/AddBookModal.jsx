@@ -18,29 +18,65 @@ const AddBookModal = ({ close, refresh }) => {
       close();
       refresh();
     } catch (err) {
-      alert('Failed to add book');
+      alert('Failed to add book. Please try again.');
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex items-center justify-center z-50">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded w-full max-w-md space-y-4"
+        className="bg-white rounded-2xl shadow-xl p-6 w-full max-w-lg space-y-4"
       >
-        <h2 className="text-xl font-bold">Add New Book</h2>
-        <input className="w-full border p-2" placeholder="Title" required onChange={(e) => setForm({ ...form, title: e.target.value })} />
-        <input className="w-full border p-2" placeholder="Author" required onChange={(e) => setForm({ ...form, author: e.target.value })} />
-        <input className="w-full border p-2" placeholder="Genre" onChange={(e) => setForm({ ...form, genre: e.target.value })} />
-        <select className="w-full border p-2" onChange={(e) => setForm({ ...form, status: e.target.value })}>
-          <option>To Read</option>
-          <option>Reading</option>
-          <option>Read</option>
-        </select>
-        <input type="file" onChange={(e) => setCover(e.target.files[0])} />
-        <div className="flex justify-between">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded" type="submit">Add</button>
-          <button className="text-gray-600" type="button" onClick={close}>Cancel</button>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">📘 Add New Book</h2>
+
+        <div className="space-y-2">
+          <input
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Title *"
+            required
+            onChange={(e) => setForm({ ...form, title: e.target.value })}
+          />
+          <input
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Author *"
+            required
+            onChange={(e) => setForm({ ...form, author: e.target.value })}
+          />
+          <input
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2"
+            placeholder="Genre"
+            onChange={(e) => setForm({ ...form, genre: e.target.value })}
+          />
+          <select
+            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2"
+            onChange={(e) => setForm({ ...form, status: e.target.value })}
+          >
+            <option>To Read</option>
+            <option>Reading</option>
+            <option>Read</option>
+          </select>
+          <input
+            type="file"
+            onChange={(e) => setCover(e.target.files[0])}
+            className="w-full text-sm"
+          />
+        </div>
+
+        <div className="flex justify-end space-x-2 pt-2">
+          <button
+            type="button"
+            onClick={close}
+            className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow"
+          >
+            Add Book
+          </button>
         </div>
       </form>
     </div>

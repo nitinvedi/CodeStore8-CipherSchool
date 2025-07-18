@@ -7,7 +7,9 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-      <Navbar />
+      {/* <div className="pt-16 px-4"> */}
+        <Navbar />
+      {/* </div> */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />

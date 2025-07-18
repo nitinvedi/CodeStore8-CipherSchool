@@ -2,33 +2,38 @@ import API from '../services/api';
 
 const BookCard = ({ book, refresh }) => {
   const handleDelete = async () => {
-    if (window.confirm("Delete this book?")) {
-      await API.delete(`/api/books/${book._id}`);
-      refresh();
+    if (window.confirm('Are you sure you want to delete this book?')) {
+      try {
+        await API.delete(`/api/books/${book._id}`);
+        refresh();
+      } catch (error) {
+        console.error('Delete failed:', error);
+        alert('Something went wrong. Try again.');
+      }
     }
   };
 
   return (
-    <div className="border p-4 rounded shadow space-y-2 bg-white">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
       {book.cover && (
         <img
           src={`http://localhost:5000/uploads/${book.cover}`}
           alt="cover"
-          className="w-full h-48 object-cover rounded"
+          className="w-full h-48 object-cover"
         />
       )}
-      <div>
-        <h3 className="text-lg font-bold">{book.title}</h3>
-        <p><span className="font-semibold">Author:</span> {book.author}</p>
-        <p><span className="font-semibold">Genre:</span> {book.genre}</p>
-        <p><span className="font-semibold">Status:</span> {book.status}</p>
+      <div className="p-4 space-y-1">
+        <h3 className="text-lg font-bold text-gray-800">{book.title}</h3>
+        <p className="text-gray-600"><span className="font-semibold">Author:</span> {book.author}</p>
+        <p className="text-gray-600"><span className="font-semibold">Genre:</span> {book.genre}</p>
+        <p className="text-gray-600"><span className="font-semibold">Status:</span> {book.status}</p>
+        <button
+          onClick={handleDelete}
+          className="mt-2 inline-block text-sm text-red-500 hover:text-red-700 hover:underline transition border-2 rounded-md p-2"
+        >
+           Delete
+        </button>
       </div>
-      <button
-        onClick={handleDelete}
-        className="text-red-600 hover:underline text-sm"
-      >
-        Delete
-      </button>
     </div>
   );
 };
