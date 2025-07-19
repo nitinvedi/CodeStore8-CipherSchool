@@ -3,14 +3,20 @@ import API from '../services/api';
 
 const AddBookModal = ({ close, refresh }) => {
   const [form, setForm] = useState({
-    title: '', author: '', genre: '', status: 'To Read'
+    title: '',
+    author: '',
+    genre: '',
+    status: 'To Read',
   });
   const [cover, setCover] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const data = new FormData();
-    for (let key in form) data.append(key, form[key]);
+    for (let key in form) {
+      data.append(key, form[key]);
+    }
     if (cover) data.append('cover', cover);
 
     try {
@@ -18,6 +24,7 @@ const AddBookModal = ({ close, refresh }) => {
       close();
       refresh();
     } catch (err) {
+      console.error('Book upload failed:', err);
       alert('Failed to add book. Please try again.');
     }
   };
@@ -32,24 +39,31 @@ const AddBookModal = ({ close, refresh }) => {
 
         <div className="space-y-2">
           <input
+            type="text"
             className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Title *"
             required
+            value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
           <input
+            type="text"
             className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Author *"
             required
+            value={form.author}
             onChange={(e) => setForm({ ...form, author: e.target.value })}
           />
           <input
+            type="text"
             className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2"
             placeholder="Genre"
+            value={form.genre}
             onChange={(e) => setForm({ ...form, genre: e.target.value })}
           />
           <select
             className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2"
+            value={form.status}
             onChange={(e) => setForm({ ...form, status: e.target.value })}
           >
             <option>To Read</option>
@@ -58,6 +72,7 @@ const AddBookModal = ({ close, refresh }) => {
           </select>
           <input
             type="file"
+            accept="image/*"
             onChange={(e) => setCover(e.target.files[0])}
             className="w-full text-sm"
           />

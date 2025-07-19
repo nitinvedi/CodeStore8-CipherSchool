@@ -1,6 +1,8 @@
 import API from '../services/api';
 
 const BookCard = ({ book, refresh }) => {
+  const backendURL = import.meta.env.VITE_API || 'http://localhost:5000';
+
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this book?')) {
       try {
@@ -17,7 +19,7 @@ const BookCard = ({ book, refresh }) => {
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
       {book.cover && (
         <img
-          src={`http://localhost:5000/uploads/${book.cover}`}
+          src={`${backendURL}/uploads/${book.cover}`}
           alt="cover"
           className="w-full h-48 object-cover"
         />
@@ -31,7 +33,7 @@ const BookCard = ({ book, refresh }) => {
           onClick={handleDelete}
           className="mt-2 inline-block text-sm text-red-500 hover:text-red-700 hover:underline transition border-2 rounded-md p-2"
         >
-           Delete
+          Delete
         </button>
       </div>
     </div>
