@@ -75,12 +75,12 @@ const BookSearch = ({ onBookAdd }) => {
                 <p className="text-sm text-gray-600 mb-2">
                   by {info.authors?.join(', ') || 'Unknown'}
                 </p>
-                <button
+                {/* <button
                   onClick={() => handleAddBook(book)}
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 text-sm rounded transition"
                 >
                   ➕ Add to My Library
-                </button>
+                </button> */}
               </div>
             </div>
           );
