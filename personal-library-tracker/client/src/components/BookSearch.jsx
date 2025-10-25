@@ -26,7 +26,7 @@ const BookSearch = ({ onBookAdd }) => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/books', newBook, {
+      await axios.post('https://mybackenddomain.com/api/books', newBook, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onBookAdd();
