@@ -16,7 +16,7 @@ const BookCard = ({ book, refresh }) => {
   };
 
 
-  const randomBookCover = `https://loremflickr.com/400/600/books}`;
+  const randomBookCover = `https://loremflickr.com/400/600/books`;
 
   const imageSrc = book.cover
     ? `${backendURL}/uploads/${book.cover}`
