@@ -17,19 +17,15 @@ const BookCard = ({ book, refresh }) => {
 
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
-      {book.cover && (
-        <img
-        src={
-          book.cover
-            ? book.cover.startsWith('http')
-              ? book.cover
-              : `${backendURL}/uploads/${book.cover}`
-            : '../assets/default-cover.png'
-        }
-        alt={book.title || 'Book Cover'}
+      <img
+        src={book.cover ? `${backendURL}/uploads/${book.cover}` : '/default-cover.jpg'}
+        alt="cover"
         className="w-full h-48 object-cover"
-        />
-      )}
+        onError={(e) => {
+          e.target.onerror = null; // prevent infinite loop if default also fails
+          e.target.src = '/default-cover.jpg';
+        }}
+      />
       <div className="p-4 space-y-1">
         <h3 className="text-lg font-bold text-gray-800">{book.title}</h3>
         <p className="text-gray-600"><span className="font-semibold">Author:</span> {book.author}</p>
