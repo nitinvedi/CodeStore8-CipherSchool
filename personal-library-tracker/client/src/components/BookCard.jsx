@@ -16,7 +16,7 @@ const BookCard = ({ book, refresh }) => {
   };
 
 
-  const randomBookCover = `https://loremflickr.com/400/600/books`;
+  const randomBookCover = `https://loremflickr.com/400/600/books?lock=${book._id}`;
 
   const imageSrc = book.cover
     ? `${backendURL}/uploads/${book.cover}`
@@ -31,7 +31,7 @@ const BookCard = ({ book, refresh }) => {
         loading="lazy"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = `https://loremflickr.com/400/600/books`;
+          e.target.src = `https://loremflickr.com/400/600/books?lock=${book._id}-fallback`;
         }}
       />
       <div className="p-4 space-y-1">
