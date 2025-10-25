@@ -14,21 +14,24 @@ const BookCard = ({ book, refresh }) => {
       }
     }
   };
-  const randomBookCover = `https://source.unsplash.com/random/400x600/?book,reading,library&sig=${book._id}`;
+
+
+  const randomBookCover = `https://loremflickr.com/400/600/book?lock=${book._id || Math.random()}`;
 
   const imageSrc = book.cover
     ? `${backendURL}/uploads/${book.cover}`
     : randomBookCover;
-  
+
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
       <img
         src={imageSrc}
         alt="cover"
         className="w-full h-48 object-cover"
+        loading="lazy"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = randomBookCover;
+          e.target.src = `https://loremflickr.com/400/600/book?lock=fallback-${book._id}`;
         }}
       />
       <div className="p-4 space-y-1">
