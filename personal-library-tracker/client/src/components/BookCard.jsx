@@ -19,9 +19,15 @@ const BookCard = ({ book, refresh }) => {
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
       {book.cover && (
         <img
-          src={`${backendURL}/uploads/${book.cover}`}
-          alt="cover"
-          className="w-full h-48 object-cover"
+        src={
+          book.cover
+            ? book.cover.startsWith('http')
+              ? book.cover
+              : `${backendURL}/uploads/${book.cover}`
+            : '/default-cover.png'
+        }
+        alt={book.title || 'Book Cover'}
+        className="w-full h-48 object-cover"
         />
       )}
       <div className="p-4 space-y-1">
