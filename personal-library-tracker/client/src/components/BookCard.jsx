@@ -14,20 +14,21 @@ const BookCard = ({ book, refresh }) => {
       }
     }
   };
-  const randomCover = `https://picsum.photos/300/400?random=${book._id}`;
+  const randomBookCover = `https://source.unsplash.com/random/400x600/?book,reading,library&sig=${book._id}`;
+
+  const imageSrc = book.cover
+    ? `${backendURL}/uploads/${book.cover}`
+    : randomBookCover;
+  
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
       <img
-        src={
-          book.cover
-            ? `${backendURL}/uploads/${book.cover}`
-            : randomCover
-        }
+        src={imageSrc}
         alt="cover"
         className="w-full h-48 object-cover"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = randomCover;
+          e.target.src = randomBookCover;
         }}
       />
       <div className="p-4 space-y-1">
