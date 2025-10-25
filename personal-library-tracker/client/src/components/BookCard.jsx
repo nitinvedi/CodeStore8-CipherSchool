@@ -14,16 +14,20 @@ const BookCard = ({ book, refresh }) => {
       }
     }
   };
-
+  const randomCover = `https://picsum.photos/300/400?random=${book._id}`;
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 overflow-hidden">
       <img
-        src={book.cover ? `${backendURL}/uploads/${book.cover}` : '/default-cover.jpg'}
+        src={
+          book.cover
+            ? `${backendURL}/uploads/${book.cover}`
+            : randomCover
+        }
         alt="cover"
         className="w-full h-48 object-cover"
         onError={(e) => {
-          e.target.onerror = null; // prevent infinite loop if default also fails
-          e.target.src = '/default-cover.jpg';
+          e.target.onerror = null;
+          e.target.src = randomCover;
         }}
       />
       <div className="p-4 space-y-1">
