@@ -31,7 +31,7 @@ const BookCard = ({ book, refresh }) => {
         loading="lazy"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = `https://loremflickr.com/400/600/book?lock=fallback-${book._id}`;
+          e.target.src = `https://loremflickr.com/400/600/books`;
         }}
       />
       <div className="p-4 space-y-1">
