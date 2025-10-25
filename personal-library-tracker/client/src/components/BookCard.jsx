@@ -24,7 +24,7 @@ const BookCard = ({ book, refresh }) => {
             ? book.cover.startsWith('http')
               ? book.cover
               : `${backendURL}/uploads/${book.cover}`
-            : '/default-cover.png'
+            : '../assets/default-cover.png'
         }
         alt={book.title || 'Book Cover'}
         className="w-full h-48 object-cover"
