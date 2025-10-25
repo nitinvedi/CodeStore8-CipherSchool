@@ -104,9 +104,9 @@ export default function Login() {
 
         {/* Links */}
         <div className="mt-4 flex justify-between text-sm text-gray-600">
-          <Link to="/forgot-password" className="hover:underline">
+          {/* <Link to="/forgot-password" className="hover:underline">
             Forgot Password?
-          </Link>
+          </Link> */}
           <Link to="/signup" className="hover:underline">
             Don’t have an account? Sign up
           </Link>
