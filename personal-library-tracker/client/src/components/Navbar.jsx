@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BookMarked, LogIn, LogOut, UserPlus, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// ✅ Wrap Link with motion for animation support
+const MotionLink = motion(Link);
+
 const Navbar = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
@@ -18,7 +21,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 w-full bg-slate-50/60 backdrop-blur-lg border-b border-slate-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          
+
           {/* Brand */}
           <Link
             to="/"
@@ -49,7 +52,8 @@ const Navbar = () => {
                 >
                   Login
                 </Link>
-                <motion.Link
+                {/* ✅ Fixed animated Link */}
+                <MotionLink
                   to="/signup"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -58,7 +62,7 @@ const Navbar = () => {
                 >
                   <UserPlus className="w-4 h-4" />
                   Signup
-                </motion.Link>
+                </MotionLink>
               </>
             )}
           </div>
@@ -103,7 +107,8 @@ const Navbar = () => {
                   >
                     Login
                   </Link>
-                  <motion.Link
+                  {/* ✅ Fixed animated Link for mobile */}
+                  <MotionLink
                     to="/signup"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -112,7 +117,7 @@ const Navbar = () => {
                   >
                     <UserPlus className="w-4 h-4" />
                     Signup
-                  </motion.Link>
+                  </MotionLink>
                 </>
               )}
             </motion.div>
